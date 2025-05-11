@@ -1,0 +1,13 @@
+plot \
+"0C_analisi_dilatazione.txt" using 1:2 with points pt 7 ps 0.1 notitle, \
+"15C_analisi_dilatazione.txt" using 1:2 with points pt 7 ps 0.1 notitle, \
+"25C_analisi_dilatazione.txt" using 1:2 with points pt 7 ps 0.1 notitle, \
+"35C_analisi_dilatazione.txt" using 1:2 with points pt 7 ps 0.1 notitle, \
+"45C_analisi_dilatazione.txt" using 1:2 with points pt 7 ps 0.1 notitle, \
+"55C_analisi_dilatazione.txt" using 1:2 with points pt 7 ps 0.1 notitle, \
+NaN with points pt 7 ps 0.8 title "0°", \
+NaN with points pt 7 ps 0.8 title "15°", \
+NaN with points pt 7 ps 0.8 title "25°", \
+NaN with points pt 7 ps 0.8 title "35°", \
+NaN with points pt 7 ps 0.8 title "45°", \
+NaN with points pt 7 ps 0.8 title "55°"
