@@ -35,9 +35,9 @@ for i, file_path in enumerate(file_paths):
 
 # Impostazioni grafiche
 plt.axhline(0, color='gray', linestyle='--', linewidth=1)  # Linea guida y=0
-plt.xlabel("1/p [m^2/Kg]")
+plt.xlabel("1/p [cm^2/Kg]")
 plt.ylabel("Residuo [cm^3]")
-plt.title("Residui compressioni, yi - (a + bxi)")
+plt.title("Residui dilatazioni, yi - (a + bxi)")
 plt.legend()
 plt.grid(True)
 plt.tight_layout()

@@ -1,0 +1,49 @@
+
+
+*******************************************************************************
+Thu May 15 11:45:51 2025
+
+
+FIT:    data read from "0C_analisi_dilatazione.txt"
+        format = z
+        #datapoints = 3883
+        residuals are weighted equally (unit weight)
+
+function used for fitting: y(x)
+	y(x) = a + b*x
+BREAK: Need via and either parameter list or file
+
+*******************************************************************************
+Thu May 15 11:46:07 2025
+
+
+FIT:    data read from "0C_analisi_dilatazione.txt"
+        format = z
+        #datapoints = 3883
+        residuals are weighted equally (unit weight)
+
+function used for fitting: y(x)
+	y(x) = a + b*x
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             b            
+   0 8.1967968927e+05   0.00e+00  8.46e-01    1.000000e+00   1.000000e+00
+   3 4.7862100840e+00  -1.91e-04  8.46e-04   -3.460778e-01   2.511205e+01
+
+After 3 iterations the fit converged.
+final sum of squares of residuals : 4.78621
+rel. change during last iteration : -1.90774e-09
+
+degrees of freedom    (FIT_NDF)                        : 3881
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0351175
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00123324
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = -0.346078        +/- 0.001874     (0.5416%)
+b               = 25.1121          +/- 0.002859     (0.01139%)
+
+correlation matrix of the fit parameters:
+                a      b      
+a               1.000 
+b              -0.954  1.000 
