@@ -1,0 +1,254 @@
+\documentclass[a4paper,12pt]{article}
+
+% Pacchetti utili
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{amsmath, amssymb}
+\usepackage{graphicx}
+\usepackage{makecell}  
+\usepackage{booktabs}
+\usepackage{geometry}
+\usepackage{caption}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage[parfill]{parskip}
+\usepackage{siunitx}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{subcaption}
+\usepackage{comment}
+
+% Impostazioni di margine e intestazioni
+\geometry{a4paper, margin=1in, tmargin=1cm}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+% Titolo e autori
+\title{\vspace{0.1cm} \textbf{Relazione legge dei gas}}
+\author{Giacomo Caneva, Thomas Gozzi, Antonio Gobbato}
+\date{15 Maggio 2025}
+
+\begin{document}
+\maketitle
+
+\vspace{-0.7cm}
+\noindent\rule{\textwidth}{0.5pt}
+\vspace{0.5cm}
+
+\section{Obiettivo}
+Verifica della legge dei gas ideali per l'aria
+\begin{equation}
+    PV = nRT
+\end{equation}
+
+\section{Dati grezzi}
+Di seguito sono i grafici che mostrano i dati grezzi raccolti nelle due fasi (compressione e dilatazione).
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{6Compressione_punti_raw.pdf}
+        \caption{Dati grezzi in fase di compressione}
+        \label{fig:compressione_raw}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{6Dilatazione_punti_raw.pdf}
+        \caption{Dati grezzi in fase di dilatazione}
+        \label{fig:dilatazione_raw}
+    \end{minipage}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{DatiGrezzi_compressione_dilatazione_confronto.pdf}
+    \caption{Dati grezzi a confronto per le due fasi}
+    \label{fig:confronto_raw}
+\end{figure}
+
+\section{Analisi Residui}
+Si svolge la regressione lineare sui dati raccolti, rimuovendo opportunamente le code dei dati qualora si vedesse che il volume non cambia al variare della pressione, e si procede a visualizzare i residui per le due diverse fasi nei due grafici di seguito.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{ResiduiCompressioneGrandi.pdf}
+        \caption{Residui in fase di compressione}
+        \label{fig:residui_comp}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[t]{0.48\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{ResiduiDilatazioneGrandi.pdf}
+        \caption{Residui in fase di dilatazione}
+        \label{fig:residui_dil}
+    \end{minipage}
+\end{figure}
+
+Si vede chiaramente dal grafico che il fit non è buono dato che è presente un bias: i residui nella parte centrale sono sotto la retta interpolante, mentre ai lati il trend è opposto.
+
+\section{Tabella dati interpolazioni}
+Di seguito seguono due tabelle che riassumono i parametri dell'interpolazione lineare.
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\caption{Parametri delle 6 interpolazioni lineari in fase di compressione}
+\label{tab:interp_compressione}
+\begin{tabular}{|c|r|r|r|r|r|}
+\hline
+\textbf{T (\si{\celsius})} & \textbf{a (\si{cm^3})} & \textbf{b (\si{cm \cdot kg})} & \textbf{err(a) (\si{cm^3})} & \textbf{err(b) (\si{cm\cdot kg})} & \textbf{$\sigma_{\textbf{post}}$ (\si{cm^3})} \\
+\hline
+0  & -0.320 & 25.187 & 0.002 & 0.003 & 0.032 \\
+15 & -0.478 & 26.908 & 0.002 & 0.003 & 0.040 \\
+25 & -0.548 & 27.874 & 0.002 & 0.003 & 0.034 \\
+35 & -0.672 & 29.061 & 0.002 & 0.004 & 0.038 \\
+45 & -0.665 & 29.761 & 0.003 & 0.005 & 0.036 \\
+55 & -0.794 & 30.865 & 0.003 & 0.005 & 0.042 \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\caption{Parametri delle 6 interpolazioni lineari in fase di dilatazione}
+\label{tab:interp_dilatazione}
+\begin{tabular}{|c|r|r|r|r|r|}
+\hline
+\textbf{T (\si{\celsius})} & \textbf{a (\si{cm^3})} & \textbf{b (\si{cm \cdot kg})} & \textbf{err(a) (\si{cm^3})} & \textbf{err(b) (\si{cm \cdot kg})} & \textbf{$\sigma_{\textbf{post}}$ (\si{cm^3})} \\
+\hline
+0  & -0.346 & 25.112 & 0.002 & 0.003 & 0.035 \\
+15 & -0.492 & 26.765 & 0.002 & 0.004 & 0.041 \\
+25 & -0.541 & 27.703 & 0.002 & 0.003 & 0.034 \\
+35 & -0.597 & 28.626 & 0.002 & 0.004 & 0.031 \\
+45 & -0.689 & 29.633 & 0.003 & 0.005 & 0.037 \\
+55 & -0.799 & 30.695 & 0.003 & 0.006 & 0.041 \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Valutazione errori relativi}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\caption{Tabella errori relativi in fase di compressione ‰}
+\label{tab:errori_compressione}
+\begin{tabular}{|c|r|r|r|r|r|r|}
+\hline
+\textbf{T (\si{\celsius})} & \textbf{Err. tar. V} & \textbf{Err. tar. P} & \textbf{Nqs} & \textbf{Non isot.} & \textbf{Err. tar. T} & \textbf{Sist. non c.}\\
+\hline
+0  & $\pm$20.06 & $\pm$50.26 & $\pm$0.76 & $\pm$0.19 & $\pm$0.63 & $\pm$0.39 \\
+15 & $\pm$19.94 & $\pm$53.47 & $\pm$1.59 & $\pm$0.03 & $\pm$0.60 & $\pm$0.39 \\
+25 & $\pm$19.84 & $\pm$55.13 & $\pm$1.68 & $\pm$0.13 & $\pm$0.58 & $\pm$0.39 \\
+35 & $\pm$20.34 & $\pm$59.20 & $\pm$4.14 & $\pm$0.20 & $\pm$0.56 & $\pm$0.39 \\
+45 & $\pm$20.64 & $\pm$61.77 & $\pm$0.87 & $\pm$0.30 & $\pm$0.54 & $\pm$0.39 \\
+55 & $\pm$20.66 & $\pm$62.96 & $\pm$1.19 & $\pm$0.43 & $\pm$0.53 & $\pm$0.39 \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.3}
+\caption{Tabella errori relativi in fase di dilatazione ‰}
+\label{tab:errori_dilatazione}
+\begin{tabular}{|c|r|r|r|r|r|r|}
+\hline
+\textbf{T (\si{\celsius})} & \textbf{Err. tar. V} & \textbf{Err. tar. P} & \textbf{Nqs} & \textbf{Non isot.} & \textbf{Err. tar. T} & \textbf{Sist. non c.}\\
+\hline
+0  & $\pm$19.95 & $\pm$50.26 & $\pm$0.76 & $\pm$0.02 & $\pm$0.63 & $\pm$0.39 \\
+15 & $\pm$19.84 & $\pm$53.47 & $\pm$1.59 & $\pm$0.07 & $\pm$0.60 & $\pm$0.39 \\
+25 & $\pm$19.95 & $\pm$55.13 & $\pm$1.68 & $\pm$0.04 & $\pm$0.58 & $\pm$0.39 \\
+35 & $\pm$20.44 & $\pm$59.20 & $\pm$4.14 & $\pm$0.14 & $\pm$0.56 & $\pm$0.39 \\
+45 & $\pm$20.40 & $\pm$61.77 & $\pm$0.87 & $\pm$0.30 & $\pm$0.54 & $\pm$0.39 \\
+55 & $\pm$20.62 & $\pm$62.96 & $\pm$1.19 & $\pm$0.23 & $\pm$0.53 & $\pm$0.39 \\
+\hline
+\end{tabular}
+\end{table}
+
+\vspace{1cm}
+
+\noindent\textbf{Legenda formule errori relativi (riferimento colonna):}
+\begin{itemize}
+    \item Errore casuale su \( b \): \( \pm \frac{s_b}{b} \)
+    \item Errori di taratura su \( V \) e \( p \): \( \pm \frac{2\delta V}{\sqrt{3}\Delta V}, \quad \pm \frac{2\delta p}{\sqrt{3}\Delta p} \)
+    \item Non quasi staticità: \( \pm \frac{|n_{\text{dilat}} - n_{\text{comp}}|}{2\sqrt{3}\bar{n}} \)
+    \item Non isoterma: \( \pm \frac{s_T}{T} \)
+    \item Errore di taratura su \( T \): \( \pm \frac{\delta_T}{\sqrt{3}T} \)
+    \item Errore sistema non chiuso: \( \frac{\delta n_j}{n_j} = -\frac{\alpha}{n_j} \left( TM_j + \frac{tm_j}{2} \right); \quad \pm \frac{\delta n_1 - \delta n_{\text{ultimo}}}{2\sqrt{3}\bar{n}} \)
+\end{itemize}
+
+
+
+\section{Conclusioni} 
+
+ 
+
+\section{Appendice}
+
+
+\subsection{Formule}
+\vspace{0.2cm}
+
+\begin{itemize}
+
+\item \textbf{Media aritmetica}
+\begin{equation}
+    \bar{x} = \frac{1}{N} \sum_{i=1}^{N} x_i
+\end{equation}
+
+\item \textbf{Deviazione standard della singola misura} 
+
+    \begin{equation}
+        \sigma = \sqrt{\frac{1}{N-1} \sum_{i=1}^{N} (x_i - \bar{x})^2}
+    \end{equation} 
+\item \textbf{Deviazione standard della media per misure statisticamente indipendenti}
+\begin{equation}
+    \sigma_{\bar{x}} = \frac{\sigma}{\sqrt{N}}
+\end{equation}
+
+\item \textbf{Errore relativo}
+\begin{equation}
+    \varepsilon_r = \frac{\sigma}{x}
+\end{equation}
+ \item \textbf{Interpolazione lineare \( y = a + bx \) con} 
+    \begin{itemize}
+        \item \( \forall i \) \( x_i \) statisticamente indipendenti tra loro, \( y_i \) statisticamente indipendenti tra loro;
+        \item \( \forall i \) \( \sigma_{x}/x \ll \sigma_{y}/y \), e \( \sigma_i = \sigma_y \)
+    \end{itemize}
+    
+    \begin{equation}
+        a_i = \frac{1}{\Delta} \left( \sum_i x_i^2 - x_i \sum_i x_j \right)
+    \end{equation}
+
+    \begin{equation}
+        b_i = \frac{1}{\Delta} \left( N \sum_i x_i - \sum_i x_j \right)
+    \end{equation}
+
+    \begin{equation}
+        \sigma_a = \sigma_y \sqrt{ \frac{\sum_i x_i^2}{\Delta} }
+    \end{equation}
+
+    \begin{equation}
+        \sigma_b = \sigma_y \sqrt{ \frac{N}{\Delta} }
+    \end{equation}
+ 
+\begin{equation}
+    \Delta = N \sum_i x_i^2 - \left( \sum_i x_i \right)^2
+\end{equation}
+
+    \begin{equation}
+        \sigma_{y,\text{post}} = \sqrt{ \frac{\sum_{i=1}^{N} (y_i - a - bx_i)^2}{N-2} }
+    \end{equation}
+
+\end{itemize}
+
+
+\end{document}
