@@ -34,14 +34,18 @@ def plot_data(files):
                  marker='o',
                  linestyle='-',
                  color=colors[i],
-                 markersize = 0.5,
-                 label=f'{5*i}°' if i == 0 else f'{15 + 10*(i-1)}°')  # Genera le label corrette
+                 markersize=0.5,
+                 label=f'{5*i}°' if i == 0 else f'{15 + 10*(i-1)}°')
     
     plt.xlabel('1/p [cm²/Kg]', fontsize=18)
     plt.ylabel('Volume [cm³]', fontsize=18)
-    plt.title('Fase di dilatazione', fontsize=20)
+    plt.title('Fase di compressione', fontsize=22)
+    
+    # ✅ Aumenta dimensione numeri sugli assi
+    plt.tick_params(axis='both', which='major', labelsize=16)
+    
     plt.grid(True, linestyle='--', alpha=0.7)
-    plt.legend(title='Temperatura', title_fontsize=16, fontsize=10)
+    plt.legend(title='Temperatura', title_fontsize=16, fontsize=12)
     plt.tight_layout()
     plt.show()
 

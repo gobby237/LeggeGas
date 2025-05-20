@@ -70,3 +70,52 @@ correlation matrix of the fit parameters:
                 c      d      
 c               1.000 
 d              -0.867  1.000 
+
+
+*******************************************************************************
+Mon May 19 19:50:55 2025
+
+
+FIT:    data read from "MoliTempo.txt"
+        format = z
+        #datapoints = 5649
+        residuals are weighted equally (unit weight)
+
+function used for fitting: y(x)
+	y(x) = a + b*x
+BREAK: Need via and either parameter list or file
+
+*******************************************************************************
+Mon May 19 19:50:59 2025
+
+
+FIT:    data read from "MoliTempo.txt"
+        format = z
+        #datapoints = 5649
+        residuals are weighted equally (unit weight)
+
+function used for fitting: y(x)
+	y(x) = a + b*x
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             b            
+   0 6.0424126132e+08   0.00e+00  2.31e+02    1.000000e+00   1.000000e+00
+   6 1.4908623623e-10  -3.64e-10  2.31e-04    1.108004e-03   3.333681e-09
+
+After 6 iterations the fit converged.
+final sum of squares of residuals : 1.49086e-10
+rel. change during last iteration : -3.6411e-15
+
+degrees of freedom    (FIT_NDF)                        : 5647
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 1.62484e-07
+variance of residuals (reduced chisquare) = WSSR/ndf   : 2.6401e-14
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = 0.001108         +/- 4.324e-09    (0.0003903%)
+b               = 3.33368e-09      +/- 1.326e-11    (0.3977%)
+
+correlation matrix of the fit parameters:
+                a      b      
+a               1.000 
+b              -0.866  1.000 

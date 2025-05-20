@@ -43,6 +43,7 @@ int main ()
     
     
 
+    /*
     
     fstream fin1 ("n_compressione.txt"); 
     fstream fin2 ("n_dilatazione.txt"); 
@@ -75,6 +76,8 @@ int main ()
         media = (n_comp.at(i) + n_dil.at(i))/2;
         out << t.at(i) << "    " << media << "    " << errel.at(i)*media << "\n"; 
     }
+
+    */
 
     
     
@@ -111,6 +114,35 @@ int main ()
     }
     
     */
+
+    ifstream fin ("analisi_dati.txt"); 
+    ofstream out ("grafico.txt", std::ios::app);
+
+    // temp / errt / b / err b / moli
+
+    double val1, val2, val3, val4, val5;
+    vector<double> t, errt, b, errb, errn, n;
+
+    while (fin>>val1>>val2>>val3>>val4>>val5)
+    {
+        t.push_back(val1); 
+        errt.push_back(val2); 
+        b.push_back(val3); 
+        errb.push_back(val4);
+        n.push_back(val5); 
+    }
+
+    // nel file out: t / moli / err moli 
+    
+    for(int i = 0; i < 6; i ++ )
+    {
+        errn.push_back(n.at(i)*sqrt(pow((errb.at(i)/b.at(i)),2) + pow((errt.at(i)/t.at(i)),2)));
+    }
+
+    for (int i = 0; i < 6; i ++ )
+    {
+        out << t.at(i) << "     " << n.at(i) << "     " << errn.at(i) << "\n"; 
+    }
 
 
 

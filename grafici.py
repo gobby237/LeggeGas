@@ -4,9 +4,7 @@ from scipy.stats import linregress
 from tkinter import Tk, filedialog
 from matplotlib.lines import Line2D
 
-
 etichette_leggenda = ["0°", "15°", "25°", "35°", "45°", "55°"]
-
 
 Tk().withdraw()
 file_paths = filedialog.askopenfilenames(title="Seleziona file .txt", filetypes=[("Text files", "*.txt")])
@@ -15,7 +13,8 @@ if not file_paths:
     print("Nessun file selezionato.")
     exit()
 
-plt.figure(figsize=(10, 6))
+# Crea figura e assi separatamente
+fig, ax = plt.subplots(figsize=(10, 6))
 colors = plt.cm.tab10.colors
 
 for i, file_path in enumerate(file_paths):
@@ -31,40 +30,50 @@ for i, file_path in enumerate(file_paths):
         colore = colors[i % len(colors)]
         legenda = etichette_leggenda[i] if i < len(etichette_leggenda) else f"Serie {i+1}"
 
-        plt.plot(x, residui, 'o', markersize=1, label=f"{legenda}", color=colore)
+        ax.plot(x, residui, 'o', markersize=2, label=f"{legenda}", color=colore)
 
     except Exception as e:
         print(f"Errore nel file {file_path}: {e}")
 
-# Impostazioni grafiche
-plt.rcParams.update({
-    'font.size': 14,
-    'axes.titlesize': 18,
-    'axes.labelsize': 16,
-    'xtick.labelsize': 14,
-    'ytick.labelsize': 14,
-    'legend.fontsize': 12
-})
-
+# Crea elementi per la legenda personalizzata
 legend_elements = [
-    Line2D([0], [0], 
-           marker='o', 
+    Line2D([0], [0],
+           marker='o',
            color='w',
            label=etichetta,
            markerfacecolor=colore,
-           markersize=12)  # Dimensione assoluta in punti
+           markersize=16)  # Aumenta la dimensione del pallino
     for etichetta, colore in zip(etichette_leggenda, colors)
 ]
 
-plt.axhline(0, color='gray', linestyle='--', linewidth=1)  # Linea guida y=0
-plt.xlabel("1/p [m²/kg]", fontsize=18)
-plt.ylabel("Residuo [cm³]", fontsize=18)
-plt.title("Residui dilatazione, $y_i - (a + bx_i)$", fontsize=20)
-plt.legend(handles=legend_elements, fontsize=12, loc='best')
-plt.tick_params(axis='both', which='major', labelsize=10)
-plt.legend(loc='lower left')  # Posizioni disponibili:
-plt.grid(True)
-plt.tight_layout()
-plt.show()
+# Impostazioni grafiche
+plt.rcParams.update({
+    'font.size': 18,
+    'axes.titlesize': 18,
+    'axes.labelsize': 16,
+    'xtick.labelsize': 18,
+    'ytick.labelsize': 18,
+    'legend.fontsize': 14
+})
 
-# Sostituisci le tue attuali impostazioni grafiche con:
+ax.tick_params(axis='both', which='major', labelsize=16)
+
+
+# Riduci la larghezza dell'area plottabile per fare spazio alla legenda
+box = ax.get_position()
+ax.set_position([box.x0, box.y0, box.width * 0.75, box.height])  # lascia 25% a destra per la legenda
+
+# Linea guida
+ax.axhline(0, color='gray', linestyle='--', linewidth=1)
+
+# Etichette e titolo
+ax.set_xlabel("1/p [m²/kg]", fontsize=18)
+ax.set_ylabel("Residuo [cm³]", fontsize=18)
+ax.set_title("Residui compressione, $y_i - (a + bx_i)$", fontsize=22)
+
+# Legenda esterna a destra
+ax.legend(handles=legend_elements, loc='center left', bbox_to_anchor=(1, 0.5), frameon=True)
+
+# Griglia e layout finale
+ax.grid(True)
+plt.show()

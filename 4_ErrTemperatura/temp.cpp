@@ -49,7 +49,7 @@ int main ()
     cout << "Inserire temp: "; 
     cin >> temp; 
 
-    out << temp << "    " << stdev/media << "   " << stdev*1000/media << "   " << 0.3/(sqrt(3)*media) << "\n"; 
+    // out << temp << "    " << stdev/media << "   " << stdev*1000/media << "   " << 0.3/(sqrt(3)*media) << "\n"; 
 
 
     return 0; 

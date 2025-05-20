@@ -46,22 +46,29 @@ Verifica della legge dei gas ideali per l'aria
 \section{Dati grezzi}
 Di seguito sono i grafici che mostrano i dati grezzi raccolti nelle due fasi (compressione e dilatazione).
 
+
+
 \begin{figure}[H]
     \centering
     \begin{minipage}[t]{0.48\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{6Compressione_punti_raw.pdf}
+        \includegraphics[width=\linewidth]{DatiCompressioneRaw.pdf}
         \caption{Dati grezzi in fase di compressione}
         \label{fig:compressione_raw}
     \end{minipage}
     \hfill
     \begin{minipage}[t]{0.48\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{6Dilatazione_punti_raw.pdf}
+        \includegraphics[width=\linewidth]{DatiDilatazioneRaw.pdf}
         \caption{Dati grezzi in fase di dilatazione}
         \label{fig:dilatazione_raw}
     \end{minipage}
 \end{figure}
+
+I due grafici presentano caratteristiche comuni, che necessitano spiegazione. Si nota come nelle code delle linee possa sembrare che la diminuzione di pressione non sia seguita dal relativo aumento di volume, ciò è dato dal fatto che lo strumento a fine corsa smette di rilevare la variazione dell'ultimo, in quanto non costruito per lavorare a pressioni troppo basse. Nell'analisi dati ci si è limitati a non considerare quell'ultimo tratto. 
+\[\]
+Inoltre sono evidenti altre parti in cui la linea devia dalla sua traiettoria rettilinea; ovvero con volume a poco meno di 9 $ \mathrm{cm}^3$, e circa 11 $\mathrm{cm}^3$. Lì si vede un piccolo scalino in cui la pressione sembra variare senza che vari il volume, dal momento che si possono trovare in entrambi i grafici sia in compressione che dilatazione, deduciamo che anche qui si tratta di un problema dello strumento; e siccome gli errori si sviluppano orizzontalmente, sempre allo stesso volume, arriviamo alla conclusione che sia un problema del sensone che tiene conto di questa grandezza termodinamica. Piccole imperfezioni o possibili granelli di polvere, che compromettono momentaneamente la corretta raccolta dati dello strumento. 
+
 
 \begin{figure}[H]
     \centering
@@ -70,6 +77,8 @@ Di seguito sono i grafici che mostrano i dati grezzi raccolti nelle due fasi (co
     \label{fig:confronto_raw}
 \end{figure}
 
+Sopra il confronto tra le due fasi con i dati grezzi. Non si notano particolari deviazioni: le due serie, alla stessa temperatura, sono sovrapponibili per tutti i casi. 
+
 \section{Analisi Residui}
 Si svolge la regressione lineare sui dati raccolti, rimuovendo opportunamente le code dei dati qualora si vedesse che il volume non cambia al variare della pressione, e si procede a visualizzare i residui per le due diverse fasi nei due grafici di seguito.
 
@@ -77,20 +86,20 @@ Si svolge la regressione lineare sui dati raccolti, rimuovendo opportunamente le
     \centering
     \begin{minipage}[t]{0.48\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{ResiduiCompressioneGrandi.pdf}
+        \includegraphics[width=\linewidth]{6Compressioni_residui_regressione.pdf}
         \caption{Residui in fase di compressione}
         \label{fig:residui_comp}
     \end{minipage}
     \hfill
     \begin{minipage}[t]{0.48\textwidth}
         \centering
-        \includegraphics[width=\linewidth]{ResiduiDilatazioneGrandi.pdf}
+        \includegraphics[width=\linewidth]{6Dilatazioni_residui_regressione.pdf}
         \caption{Residui in fase di dilatazione}
         \label{fig:residui_dil}
     \end{minipage}
 \end{figure}
 
-Si vede chiaramente dal grafico che il fit non è buono dato che è presente un bias: i residui nella parte centrale sono sotto la retta interpolante, mentre ai lati il trend è opposto.
+Si vede chiaramente che una delle ipotesi per effettuare il fit lineare non è soddisfatta: gli scarti sono dipendenti dai valori delle variabili indipendenti. Nella parte centrale i dati sono sotto la retta interpolante, mentre ad inizio e fine corsa avviene il contrario. 
 
 \section{Tabella dati interpolazioni}
 Di seguito seguono due tabelle che riassumono i parametri dell'interpolazione lineare.
@@ -144,12 +153,12 @@ Di seguito seguono due tabelle che riassumono i parametri dell'interpolazione li
 \hline
 \textbf{T (\si{\celsius})} & \textbf{Err. tar. V} & \textbf{Err. tar. P} & \textbf{Nqs} & \textbf{Non isot.} & \textbf{Err. tar. T} & \textbf{Sist. non c.}\\
 \hline
-0  & $\pm$20.06 & $\pm$50.26 & $\pm$0.76 & $\pm$0.19 & $\pm$0.63 & $\pm$0.39 \\
-15 & $\pm$19.94 & $\pm$53.47 & $\pm$1.59 & $\pm$0.03 & $\pm$0.60 & $\pm$0.39 \\
-25 & $\pm$19.84 & $\pm$55.13 & $\pm$1.68 & $\pm$0.13 & $\pm$0.58 & $\pm$0.39 \\
-35 & $\pm$20.34 & $\pm$59.20 & $\pm$4.14 & $\pm$0.20 & $\pm$0.56 & $\pm$0.39 \\
-45 & $\pm$20.64 & $\pm$61.77 & $\pm$0.87 & $\pm$0.30 & $\pm$0.54 & $\pm$0.39 \\
-55 & $\pm$20.66 & $\pm$62.96 & $\pm$1.19 & $\pm$0.43 & $\pm$0.53 & $\pm$0.39 \\
+0  & $\pm$20.06 & $\pm$12.05 & $\pm$0.76 & $\pm$0.19 & $\pm$0.63 & $\pm$0.39 \\
+15 & $\pm$19.94 & $\pm$11.84 & $\pm$1.59 & $\pm$0.03 & $\pm$0.60 & $\pm$0.39 \\
+25 & $\pm$19.84 & $\pm$11.94 & $\pm$1.68 & $\pm$0.13 & $\pm$0.58 & $\pm$0.39 \\
+35 & $\pm$20.34 & $\pm$12.38 & $\pm$4.14 & $\pm$0.20 & $\pm$0.56 & $\pm$0.39 \\
+45 & $\pm$20.64 & $\pm$12.71 & $\pm$0.87 & $\pm$0.30 & $\pm$0.54 & $\pm$0.39 \\
+55 & $\pm$20.66 & $\pm$12.62 & $\pm$1.19 & $\pm$0.43 & $\pm$0.53 & $\pm$0.39 \\
 \hline
 \end{tabular}
 \end{table}
@@ -163,12 +172,12 @@ Di seguito seguono due tabelle che riassumono i parametri dell'interpolazione li
 \hline
 \textbf{T (\si{\celsius})} & \textbf{Err. tar. V} & \textbf{Err. tar. P} & \textbf{Nqs} & \textbf{Non isot.} & \textbf{Err. tar. T} & \textbf{Sist. non c.}\\
 \hline
-0  & $\pm$19.95 & $\pm$50.26 & $\pm$0.76 & $\pm$0.02 & $\pm$0.63 & $\pm$0.39 \\
-15 & $\pm$19.84 & $\pm$53.47 & $\pm$1.59 & $\pm$0.07 & $\pm$0.60 & $\pm$0.39 \\
-25 & $\pm$19.95 & $\pm$55.13 & $\pm$1.68 & $\pm$0.04 & $\pm$0.58 & $\pm$0.39 \\
-35 & $\pm$20.44 & $\pm$59.20 & $\pm$4.14 & $\pm$0.14 & $\pm$0.56 & $\pm$0.39 \\
-45 & $\pm$20.40 & $\pm$61.77 & $\pm$0.87 & $\pm$0.30 & $\pm$0.54 & $\pm$0.39 \\
-55 & $\pm$20.62 & $\pm$62.96 & $\pm$1.19 & $\pm$0.23 & $\pm$0.53 & $\pm$0.39 \\
+0  & $\pm$19.95 & $\pm$12.28 & $\pm$0.76 & $\pm$0.02 & $\pm$0.63 & $\pm$0.39 \\
+15 & $\pm$19.84 & $\pm$11.77 & $\pm$1.59 & $\pm$0.07 & $\pm$0.60 & $\pm$0.39 \\
+25 & $\pm$19.95 & $\pm$11.97 & $\pm$1.68 & $\pm$0.04 & $\pm$0.58 & $\pm$0.39 \\
+35 & $\pm$20.44 & $\pm$12.16 & $\pm$4.14 & $\pm$0.14 & $\pm$0.56 & $\pm$0.39 \\
+45 & $\pm$20.40 & $\pm$12.35 & $\pm$0.87 & $\pm$0.30 & $\pm$0.54 & $\pm$0.39 \\
+55 & $\pm$20.62 & $\pm$12.58 & $\pm$1.19 & $\pm$0.23 & $\pm$0.53 & $\pm$0.39 \\
 \hline
 \end{tabular}
 \end{table}
