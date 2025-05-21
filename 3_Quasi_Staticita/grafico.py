@@ -1,4 +1,4 @@
-import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.ticker import FuncFormatter
 from tkinter import Tk, filedialog
@@ -10,11 +10,13 @@ def carica_dati():
     if not file_path:
         raise ValueError("Nessun file selezionato.")
     
-    dati = np.loadtxt(file_path)
-    if dati.shape[1] < 3:
+    # Usa pandas con delim_whitespace=True per separatori multipli spazi/tab
+    df = pd.read_csv(file_path, delim_whitespace=True, header=None, comment='#')
+    
+    if df.shape[1] < 3:
         raise ValueError("Il file deve avere almeno 3 colonne: x, y, errore su y.")
     
-    return dati[:, 0], dati[:, 1], dati[:, 2]
+    return df.iloc[:, 0].values, df.iloc[:, 1].values, df.iloc[:, 2].values
 
 def plot_dati(x, y, yerr):
     plt.figure(figsize=(10, 6))
@@ -24,8 +26,13 @@ def plot_dati(x, y, yerr):
     plt.ylabel("Moli", fontsize=18)
     plt.title("Moli in funzione della temperatura", fontsize=22)
     
-    # 👉 Notazione scientifica con 2 cifre significative sull'asse y
     plt.gca().yaxis.set_major_formatter(FuncFormatter(lambda val, _: f"{val:.2e}"))
+    
+    # Calcolo limiti y con margine del 20%
+    ymin = min(y - yerr)
+    ymax = max(y + yerr)
+    delta = ymax - ymin
+    plt.ylim(ymin - 0.5*delta, ymax + 0.5*delta)
 
     plt.grid(True)
     plt.legend()

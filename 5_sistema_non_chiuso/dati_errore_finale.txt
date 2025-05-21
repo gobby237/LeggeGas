@@ -1,0 +1,8 @@
+0.00110895 -> media n tenuta 
+
+sigman1 = 0.05*3.335*10^-9
+sigmanultimo = 0.1*3.335*10^-9*5648 + 0.05*3.335*10^-9
+
+numeratore = 1.88*10^-6
+
+err finale = 4.9 * 10^-4
