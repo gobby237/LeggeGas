@@ -99,7 +99,9 @@ Si svolge la regressione lineare sui dati raccolti, rimuovendo opportunamente le
     \end{minipage}
 \end{figure}
 
-Si vede chiaramente che una delle ipotesi per effettuare il fit lineare non è soddisfatta: gli scarti sono dipendenti dai valori delle variabili indipendenti. Nella parte centrale i dati sono sotto la retta interpolante, mentre ad inizio e fine corsa avviene il contrario. 
+Si applica una regressione lineare ai dati raccolti, rimuovendo opportunamente le code nelle regioni in cui il volume sembra non variare significativamente con la pressione. I residui della regressione vengono quindi visualizzati separatamente per le fasi di compressione e dilatazione nei grafici sottostanti.
+
+Dai grafici si osserva chiaramente che una delle ipotesi fondamentali della regressione lineare, l’indipendenza degli errori rispetto alla variabile indipendente, non è soddisfatta: gli scarti mostrano una dipendenza sistematica da $1/p$. In particolare, nella parte centrale del dominio i residui tendono a essere negativi (cioè i punti si trovano sotto la retta di regressione), mentre all’inizio e alla fine dell'intervallo i residui diventano positivi, indicando una deviazione coerente e strutturata dalla linearità. Questo fatto però non compromette la bontà dei dati che in tutta la regressione rimangono all'interno dell'errore massimo del volume: $\delta V = 0.3 \, cm^3$.
 
 \section{Tabella dati interpolazioni}
 Di seguito seguono due tabelle che riassumono i parametri dell'interpolazione lineare.
@@ -144,21 +146,23 @@ Di seguito seguono due tabelle che riassumono i parametri dell'interpolazione li
 
 \section{Valutazione errori relativi}
 
+Di seguito le tabelle riassuntive di tutti i contributi di errore per la fase di compressione e dilatazione. Subito dopo viene riportata la legenda per le diverse componenti di errore. 
+
 \begin{table}[H]
 \centering
 \renewcommand{\arraystretch}{1.3}
 \caption{Tabella errori relativi in fase di compressione ‰}
 \label{tab:errori_compressione}
-\begin{tabular}{|c|r|r|r|r|r|r|}
+\begin{tabular}{|c|r|r|r|r|r|r|r|}
 \hline
-\textbf{T (\si{\celsius})} & \textbf{Err. tar. V} & \textbf{Err. tar. P} & \textbf{Nqs} & \textbf{Non isot.} & \textbf{Err. tar. T} & \textbf{Sist. non c.}\\
+\textbf{T (\si{\celsius})} & \textbf{I} & \textbf{II} & \textbf{III} & \textbf{IV} & \textbf{V} & \textbf{VI} & \textbf{VII}\\
 \hline
-0  & $\pm$20.06 & $\pm$12.05 & $\pm$0.76 & $\pm$0.19 & $\pm$0.63 & $\pm$0.39 \\
-15 & $\pm$19.94 & $\pm$11.84 & $\pm$1.59 & $\pm$0.03 & $\pm$0.60 & $\pm$0.39 \\
-25 & $\pm$19.84 & $\pm$11.94 & $\pm$1.68 & $\pm$0.13 & $\pm$0.58 & $\pm$0.39 \\
-35 & $\pm$20.34 & $\pm$12.38 & $\pm$4.14 & $\pm$0.20 & $\pm$0.56 & $\pm$0.39 \\
-45 & $\pm$20.64 & $\pm$12.71 & $\pm$0.87 & $\pm$0.30 & $\pm$0.54 & $\pm$0.39 \\
-55 & $\pm$20.66 & $\pm$12.62 & $\pm$1.19 & $\pm$0.43 & $\pm$0.53 & $\pm$0.39 \\
+0  & $\pm$0.12 & $\pm$20.06 & $\pm$12.05 & $\pm$0.76 & $\pm$0.19 & $\pm$0.63 & $\pm$1.16  \\
+15 & $\pm$0.11 & $\pm$19.94 & $\pm$11.84 & $\pm$1.59 & $\pm$0.03 & $\pm$0.60 & $\pm$3.51 \\
+25 & $\pm$0.11 & $\pm$19.84 & $\pm$11.94 & $\pm$1.68 & $\pm$0.13 & $\pm$0.58 & $\pm$5.96 \\
+35 & $\pm$0.14 & $\pm$20.34 & $\pm$12.38 & $\pm$4.14 & $\pm$0.20 & $\pm$0.56 & $\pm$8.00 \\
+45 & $\pm$0.17 & $\pm$20.64 & $\pm$12.71 & $\pm$0.87 & $\pm$0.30 & $\pm$0.54 & $\pm$9.57 \\
+55 & $\pm$0.16 & $\pm$20.66 & $\pm$12.62 & $\pm$1.19 & $\pm$0.43 & $\pm$0.53 & $\pm$11.12 \\
 \hline
 \end{tabular}
 \end{table}
@@ -168,16 +172,16 @@ Di seguito seguono due tabelle che riassumono i parametri dell'interpolazione li
 \renewcommand{\arraystretch}{1.3}
 \caption{Tabella errori relativi in fase di dilatazione ‰}
 \label{tab:errori_dilatazione}
-\begin{tabular}{|c|r|r|r|r|r|r|}
+\begin{tabular}{|c|r|r|r|r|r|r|r|}
 \hline
-\textbf{T (\si{\celsius})} & \textbf{Err. tar. V} & \textbf{Err. tar. P} & \textbf{Nqs} & \textbf{Non isot.} & \textbf{Err. tar. T} & \textbf{Sist. non c.}\\
+\textbf{T (\si{\celsius})} & \textbf{I} & \textbf{II} & \textbf{III} & \textbf{IV} & \textbf{V} & \textbf{VI} & \textbf{VII}\\
 \hline
-0  & $\pm$19.95 & $\pm$12.28 & $\pm$0.76 & $\pm$0.02 & $\pm$0.63 & $\pm$0.39 \\
-15 & $\pm$19.84 & $\pm$11.77 & $\pm$1.59 & $\pm$0.07 & $\pm$0.60 & $\pm$0.39 \\
-25 & $\pm$19.95 & $\pm$11.97 & $\pm$1.68 & $\pm$0.04 & $\pm$0.58 & $\pm$0.39 \\
-35 & $\pm$20.44 & $\pm$12.16 & $\pm$4.14 & $\pm$0.14 & $\pm$0.56 & $\pm$0.39 \\
-45 & $\pm$20.40 & $\pm$12.35 & $\pm$0.87 & $\pm$0.30 & $\pm$0.54 & $\pm$0.39 \\
-55 & $\pm$20.62 & $\pm$12.58 & $\pm$1.19 & $\pm$0.23 & $\pm$0.53 & $\pm$0.39 \\
+0  & $\pm$0.12 & $\pm$19.95 & $\pm$12.28 & $\pm$0.76 & $\pm$0.02 & $\pm$0.63 & $\pm$2.36 \\
+15 & $\pm$0.15 & $\pm$19.84 & $\pm$11.77 & $\pm$1.59 & $\pm$0.07 & $\pm$0.60 & $\pm$4.62 \\
+25 & $\pm$0.11 & $\pm$19.95 & $\pm$11.97 & $\pm$1.68 & $\pm$0.04 & $\pm$0.58 & $\pm$7.17 \\
+35 & $\pm$0.14 & $\pm$20.44 & $\pm$12.16 & $\pm$4.14 & $\pm$0.14 & $\pm$0.56 & $\pm$8.94 \\
+45 & $\pm$0.17 & $\pm$20.40 & $\pm$12.35 & $\pm$0.87 & $\pm$0.30 & $\pm$0.54 & $\pm$10.33 \\
+55 & $\pm$0.20 & $\pm$20.62 & $\pm$12.58 & $\pm$1.19 & $\pm$0.23 & $\pm$0.53 & $\pm$11.73 \\
 \hline
 \end{tabular}
 \end{table}
@@ -186,19 +190,168 @@ Di seguito seguono due tabelle che riassumono i parametri dell'interpolazione li
 
 \noindent\textbf{Legenda formule errori relativi (riferimento colonna):}
 \begin{itemize}
-    \item Errore casuale su \( b \): \( \pm \frac{s_b}{b} \)
-    \item Errori di taratura su \( V \) e \( p \): \( \pm \frac{2\delta V}{\sqrt{3}\Delta V}, \quad \pm \frac{2\delta p}{\sqrt{3}\Delta p} \)
-    \item Non quasi staticità: \( \pm \frac{|n_{\text{dilat}} - n_{\text{comp}}|}{2\sqrt{3}\bar{n}} \)
-    \item Non isoterma: \( \pm \frac{s_T}{T} \)
-    \item Errore di taratura su \( T \): \( \pm \frac{\delta_T}{\sqrt{3}T} \)
-    \item Errore sistema non chiuso: \( \frac{\delta n_j}{n_j} = -\frac{\alpha}{n_j} \left( TM_j + \frac{tm_j}{2} \right); \quad \pm \frac{\delta n_1 - \delta n_{\text{ultimo}}}{2\sqrt{3}\bar{n}} \)
+    \item I) Errore casuale su \( b \): \( \pm \frac{s_b}{b} \)
+    \item II/III) Errori di taratura su \( V \) e su \( p \): \( \pm \frac{2\delta V}{\sqrt{3}\Delta V}, \quad \pm \frac{2\delta p}{\sqrt{3}\Delta p} \)
+    \item IV) Non quasi staticità: \( \pm \frac{|n_{\text{dilat}} - n_{\text{comp}}|}{2\sqrt{3}\bar{n}} \)
+    \item V) Non isoterma: \( \pm \frac{s_T}{T} \)
+    \item VI) Errore di taratura su \( T \): \( \pm \frac{\delta_T}{\sqrt{3}T} \)
+    \item VII) Errore sistema non chiuso: \( \frac{\delta n_j}{n_j} = -\frac{\alpha}{n_j} \left( TM_j + \frac{tm_j}{2} \right); \quad \pm \frac{\delta n_1 - \delta n_{\text{ultimo}}}{2\sqrt{3}\bar{n}} \)
 \end{itemize}
 
+Si nota che l'errore relativo di taratura di $V$ e $p$, propagato al coefficente b, è molto più alto degli altri, questo è dovuto all'elevato errore massimo del sensore e alla quantità di dati presi. Avere a disposizione un numero maggiore di acquisizioni permetterebbe di mitigare gli effetti di questo problema, facendo fronte a una possibile staratura di entrambi i sensori.
+
+Si necessita di seguito una spiegazione più approfondita per il calcolo dell'ultima componente di errore (la VII).
+La prova di tenuta, utilizzata per stimare la perdita di moli, è stata presa ad una temperatura di circa 55°C, un volume costante di 14.6 $cm^3$ e per circa 10 minuti. Si sono calcolate le moli $n_i$ per ogni misurazione effettuata avendo cura di stimare correttamente il volume morto a questa temperatura:
+\begin{equation}
+    n(t_i) = \frac{p_i \left( V_{c,i} + V_o(T \approx 55°C) \right)}{R T_i}
+\end{equation}
+Le moli così calcolate si sono poste in un grafico in funzione della temperatura. 
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{MoliTempo_regressione.pdf}
+        \caption{Moli - regressione}
+        \label{fig:regressione}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.48\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{MoliTempoScalaGrande.pdf}
+        \caption{Moli - scala ridotta}
+        \label{fig:scala-ridotta}
+    \end{subfigure}
+    \caption{Confronto tra due rappresentazioni con scale diverse}
+    \label{fig:confronto-moli}
+\end{figure}
 
 
-\section{Conclusioni} 
+Contrariamente a quanto ci si poteva intuitivamente aspettare, il coefficente angolare della retta interpolante i dati è positivo, seppur non di molto. Questo tuttavia non sta a significare, come potrebbe sembrare da prima analisi, che il numero delle moli aumenti nel tempo (una situazione fisica piuttosto difficile da giustificare) ma piuttosto che si presenta un'altro interessante scenario che emerge da un'analisi approfondita del file di tenuta; mentre la temperatura decresce nel tempo (a fine prova, soprattuto, il ghiaccio nel Dewar sembrava essersi totalmente sciolto), la pressione non varia con lo stesso ritmo per tutta la durata della prova. Si scarta la possibilità che la temperatura del termometro fosse diversa da quella del gas, dato che durante tutta la prova ci si è preoccupati di tenere attivo l'agitatore, e si avanza invece l'ipotesi di un mal funzionamento del sensore di pressione; un possibile errore "sistematico" che si è andato a sommare al coefficente angolare della retta. La perdita di moli risultava quindi mascherata da questo fatto. Per poterla stimare si è proceduto da consegna, consapevoli però che il risultato che si è ottenuto è una sovrastima del numero di moli perse al variare del tempo. 
 
- 
+
+\section{Moli in funzione della temperatura}
+
+Si riportano le moli in funzione della temperatura con due approcci differenti per visualizzare il peso degli errori sistematici in confronto a quelli casuali nella stima. Data la formula per il calcolo delle moli: $n = b/RT$, i relativi errori, $\delta n$, sono stati calcolati con la formula di propagazione che segue:
+
+\begin{equation}
+    \delta n = n \cdot \sqrt{\left( \frac{\delta_b}{b}\right)^2 + \left( \frac{\delta_t}{t}\right)^2}
+\end{equation}
+
+Ovvero in assenza di errori sistematici. I diversi termini dell'equazione sono rispettivamente: 
+\begin{itemize}
+    \item $n$: media moli tra fase di compressione e dilatazione; 
+    \item $\delta_b/b$: stima coeff. angolare e relativa incertezza tra le due fasi. Si è ottenuta utilizzando la media ponderata, ipotizzando l'assenza di errore sistematico;
+    \item $\delta_t/t$: stima temperatura e relativa incertezza tra le due fasi. Anche questa si è ottenuta utilizzando la media ponderata, con le stesse ipotesi di sopra. 
+\end{itemize}
+
+\begin{figure}[H]
+
+% Sposta tutto a sinistra
+\hspace*{1em} 
+
+\renewcommand{\arraystretch}{1.3}
+\setlength{\tabcolsep}{5pt}
+
+\begin{minipage}{0.60\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{Grafico5_moli_temperatura.pdf}
+    \caption{Moli vs temp.}
+    \label{fig:enter-label}
+    \vspace{1em}
+\end{minipage}
+\hspace{0.2em} % spazio molto ridotto tra grafico e tabella
+\begin{minipage}{0.20\linewidth}
+    \centering
+    {\scriptsize
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \textbf{T (K)} & \textbf{Moli} & \textbf{Err (moli)} \\
+        \hline
+        $2.7 \times 10^{2}$ & $1.1 \times 10^{-3}$ & $9.5 \times 10^{-8}$ \\
+        \hline
+        $2.9 \times 10^{2}$ & $1.1 \times 10^{-3}$ & $1.0 \times 10^{-7}$ \\
+        \hline
+        $3.0 \times 10^{2}$ & $1.1 \times 10^{-3}$ & $9.7 \times 10^{-8}$ \\
+        \hline
+        $3.1 \times 10^{2}$ & $1.1 \times 10^{-3}$ & $1.7 \times 10^{-7}$ \\
+        \hline
+        $3.2 \times 10^{2}$ & $1.1 \times 10^{-3}$ & $2.7 \times 10^{-7}$ \\
+        \hline
+        $3.3 \times 10^{2}$ & $1.1 \times 10^{-3}$ & $2.6 \times 10^{-7}$ \\
+        \hline
+    \end{tabular}
+    }
+    \captionof{table}{\small{Dati grafico}}
+\end{minipage}
+\end{figure}
+
+
+Si nota come la barra di errore sia totalmente trascurabile nel grafico, ciò dimostra il poco contributo degli errori casuali sulla stima delle moli.  
+Tuttavia qualora le incertezze sistematiche fossero indipendenti tra di loro, diventa possibile sommarle in quadratura con le componenti casuali. Di seguito riproponiamo lo stesso grafico includendo le componenti di errore sistematico che si è sicuri essere indipendenti tra di loro, ovvero tutte tranne la VII. Le stime di $b$ e $t$, questa volta,  sono state ricavate con la media aritmetica, ricavando la seguente formula: 
+
+\begin{equation}
+\delta_n = \overline{n} \cdot \sqrt{
+\left( \frac{\delta_b}{b} \right)^2 + 
+\left( \frac{\delta_T}{T} \right)^2 + 
+\left( \frac{2\delta V}{\sqrt{3}\Delta V} \right)^2 + 
+\left( \frac{2\delta p}{\sqrt{3}\Delta p} \right)^2 + 
+\left( \frac{\delta_T^{\text{tar}}}{\sqrt{3}T} \right)^2 + 
+\left( \frac{|n_{\text{dil}} - n_{\text{comp}}|}{2\sqrt{3}\,\overline{n}} \right)^2
+}
+\end{equation}
+
+Segue lo stesso grafico, ma con errori ricalcolati. 
+
+\begin{figure}[H]
+
+% Sposta tutto a sinistra
+\hspace*{1em} 
+
+\renewcommand{\arraystretch}{1.3}
+\setlength{\tabcolsep}{5pt}
+
+\begin{minipage}{0.60\linewidth}
+    \centering
+    \includegraphics[width=\linewidth]{5Grafico_moli_sistematici.pdf}
+    \caption{Moli vs temp - con err. sist.}
+    \label{fig:enter-label}
+    \vspace{1em}
+\end{minipage}
+\hspace{0.2em} % spazio molto ridotto tra grafico e tabella
+\begin{minipage}{0.20\linewidth}
+    \centering
+    {\scriptsize
+    \begin{tabular}{|c|c|c|}
+        \hline
+        \textbf{T (K)} & \textbf{Moli} & \textbf{Err (moli)} \\
+        \hline
+        $2.7 \times 10^{2}$ & $1.1 \times 10^{-3}$ & $2.5 \times 10^{-5}$ \\
+        \hline
+        $2.9 \times 10^{2}$ & $1.1 \times 10^{-3}$ & $2.0 \times 10^{-5}$ \\
+        \hline
+        $3.0 \times 10^{2}$ & $1.1 \times 10^{-3}$ & $2.5 \times 10^{-5}$ \\
+        \hline
+        $3.1 \times 10^{2}$ & $1.1 \times 10^{-3}$ & $2.7 \times 10^{-5}$ \\
+        \hline
+        $3.2 \times 10^{2}$ & $1.1 \times 10^{-3}$ & $2.7 \times 10^{-5}$ \\
+        \hline
+        $3.3 \times 10^{2}$ & $1.1 \times 10^{-3}$ & $2.7 \times 10^{-5}$ \\
+        \hline
+    \end{tabular}
+    }
+    \captionof{table}{\small{Dati grafico}}
+\end{minipage}
+\end{figure}
+
+La componente di errore sistematico è chiaramente preponderante nell'errore complessivo.  
+
+
+\section{Conclusioni}
+
+Di seguito viene riportata una stima delle moli, mediata tra tutte le temperature e tra le due fasi. Dato che si è in presenza di errore sistematico si è fatto utilizzo della media aritmetica. L'incertezza riportata è quella totale, ovvero la somma in quadratura di quella casuale e quella sistematica. 
+
+$$ n = (1.10 \, \pm \, 0.03) \cdot 10^{-3} \, \mathrm{mol} $$ 
 
 \section{Appendice}
 
@@ -221,6 +374,20 @@ Di seguito seguono due tabelle che riassumono i parametri dell'interpolazione li
 \item \textbf{Deviazione standard della media per misure statisticamente indipendenti}
 \begin{equation}
     \sigma_{\bar{x}} = \frac{\sigma}{\sqrt{N}}
+\end{equation}
+\item \textbf{Media pesata \(\bar{x}_p\)}  
+\begin{itemize}
+    \item Le misure \( x_i \) sono statisticamente indipendenti tra loro;
+    \item Gli errori associati \( \sigma_i \) sono noti e diversi per ciascuna misura;
+\end{itemize}
+
+\begin{equation}
+    \bar{x}_p = \frac{\sum_{i=1}^{N} \left( \frac{x_i}{\sigma_i^2} \right)}{\sum_{i=1}^{N} \left( \frac{1}{\sigma_i^2} \right)}
+\end{equation}
+
+\item \textbf{Incertezza della media pesata}
+\begin{equation}
+    \sigma_{\bar{x}_p} = \sqrt{ \frac{1}{\sum_{i=1}^{N} \left( \frac{1}{\sigma_i^2} \right)} }
 \end{equation}
 
 \item \textbf{Errore relativo}

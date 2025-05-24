@@ -46,11 +46,12 @@ int main ()
     cout << "Errore rel: " << stdev/media << endl;  
 
     string temp; 
-    cout << "Inserire temp: "; 
-    cin >> temp; 
+    //cout << "Inserire temp: "; 
+    // cin >> temp; 
 
     // out << temp << "    " << stdev/media << "   " << stdev*1000/media << "   " << 0.3/(sqrt(3)*media) << "\n"; 
 
+    out << media << "   " << stdev << "\n"; 
 
     return 0; 
 }
