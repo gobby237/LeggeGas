@@ -20,25 +20,29 @@ def carica_dati():
 
 def plot_dati(x, y, yerr):
     plt.figure(figsize=(10, 6))
-    plt.errorbar(x, y, yerr=yerr, fmt='o', markersize=5, capsize=4, label="Dati")
+    plt.errorbar(x, y, yerr=yerr, fmt='o', markersize=5, capsize=4, color='blue')
     
-    plt.xlabel("T (K)", fontsize=18)
+    plt.xlabel("T [K]", fontsize=18)
     plt.ylabel("Moli", fontsize=18)
     plt.title("Moli in funzione della temperatura", fontsize=22)
-    
+
+    # Format scientifico solo sull’asse Y
     plt.gca().yaxis.set_major_formatter(FuncFormatter(lambda val, _: f"{val:.2e}"))
-    
-    # Calcolo limiti y con margine del 20%
+
+    # Limiti y con margine del 20%
     ymin = min(y - yerr)
     ymax = max(y + yerr)
     delta = ymax - ymin
     plt.ylim(ymin - 0.5*delta, ymax + 0.5*delta)
 
+    # Linea tratteggiata a y = 1.1e-3
+    plt.axhline(1.1e-3, linestyle='--', color='black', linewidth=1)
+
     plt.grid(True)
-    plt.legend()
     plt.tick_params(axis='both', labelsize=16)
     plt.tight_layout()
     plt.show()
+
 
 if __name__ == "__main__":
     try:

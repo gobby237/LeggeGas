@@ -21,7 +21,7 @@ for i, file_path in enumerate(file_paths):
     try:
         data = np.loadtxt(file_path)
         x = data[:, 0]  # 1/p [m²/Kg]
-        y = data[:, 1]  # Volume [cm³]
+        y = data[:, 1]  # Volume [cm²]
 
         slope, intercept, *_ = linregress(x, y)
         y_fit = slope * x + intercept
@@ -30,7 +30,7 @@ for i, file_path in enumerate(file_paths):
         colore = colors[i % len(colors)]
         legenda = etichette_leggenda[i] if i < len(etichette_leggenda) else f"Serie {i+1}"
 
-        ax.plot(x, residui, 'o', markersize=0.5, label=f"{legenda}", color=colore)
+        ax.plot(x, residui, 'o', markersize=2, label=f"{legenda}", color=colore)
 
     except Exception as e:
         print(f"Errore nel file {file_path}: {e}")
@@ -42,7 +42,7 @@ legend_elements = [
            color='w',
            label=etichetta,
            markerfacecolor=colore,
-           markersize=16)
+           markersize=16)  # Aumenta la dimensione del pallino
     for etichetta, colore in zip(etichette_leggenda, colors)
 ]
 
@@ -55,21 +55,21 @@ plt.rcParams.update({
     'ytick.labelsize': 18,
     'legend.fontsize': 14
 })
+
 ax.tick_params(axis='both', which='major', labelsize=16)
+
 
 # Riduci la larghezza dell'area plottabile per fare spazio alla legenda
 box = ax.get_position()
-ax.set_position([box.x0, box.y0, box.width * 0.75, box.height])
+ax.set_position([box.x0, box.y0, box.width * 0.75, box.height])  # lascia 25% a destra per la legenda
 
-# Linee guida
+# Linea guida
 ax.axhline(0, color='gray', linestyle='--', linewidth=1)
-ax.axhline( 0.3, color='black', linestyle='--', linewidth=1)  # +0.3
-ax.axhline(-0.3, color='black', linestyle='--', linewidth=1)  # -0.3
 
 # Etichette e titolo
 ax.set_xlabel("1/p [m²/kg]", fontsize=18)
 ax.set_ylabel("Residuo [cm³]", fontsize=18)
-ax.set_title("Residui dilatazione, $y_i - (a + bx_i)$", fontsize=22)
+ax.set_title("Residui compressione, $y_i - (a + bx_i)$", fontsize=22)
 
 # Legenda esterna a destra
 ax.legend(handles=legend_elements, loc='center left', bbox_to_anchor=(1, 0.5), frameon=True)

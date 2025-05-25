@@ -17,7 +17,7 @@ int main ()
     vector<double> n,t,p,v; 
 
     ifstream fin (nome); 
-    ofstream out ("MoliTempo.txt", std::ios::app); 
+    ofstream out ("PressioneTempo.txt", std::ios::app); 
     ofstream dout ("RettaIdeale.txt", std::ios::app);
 
     while (fin >> val1 >> val2 >> val3)
@@ -42,10 +42,13 @@ int main ()
     for (int i = 0; i < t.size(); i ++ )
     {
         // dout << 0.1*(i+1) << "   " << (p.at(0)*9.81*(b + v.at(i)))/(831.4*(t.at(i) + 273.15)) << "\n"; 
+        out << 0.1*(i+1) << "   " << p.at(i) << "\n"; 
     }
 
 
     // facciamo la media 
+
+    /*
 
     double media, somma; 
 
@@ -66,7 +69,7 @@ int main ()
     cout << "L'errore relativo sul sistema non chiuso vale (*1000): " << 1000*(n.back() - n.front())/(sqrt(3)*2*media) << endl; 
 
 
-
+    */
 
 
 
